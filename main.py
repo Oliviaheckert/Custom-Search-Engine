@@ -18,7 +18,7 @@ if domain_input:
   	type="keyword",
   	include_domains=domains,
 	)
-  else:
+else:
   	response = exa.search(
     	query,
       num_results=10,
