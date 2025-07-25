@@ -5,7 +5,10 @@ import requests
 from bs4 import BeautifulSoup
 from summarizer import summarize_with_openai
 
-exa = Exa(os.getenv('API_KEY'))  # Replace with os.getenv('EXA_API_KEY') if using env var
+EXA_API_KEY = os.getenv('EXA_API_KEY')
+if not EXA_API_KEY:
+    raise ValueError("Missing EXA_API_KEY. Set it in your environment variables.")
+exa = Exa(EXA_API_KEY)
 
 def get_summary_from_url(url, char_limit=300):
     try:
