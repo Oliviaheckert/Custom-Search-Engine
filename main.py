@@ -3,8 +3,9 @@ import os
 import json
 import requests
 from bs4 import BeautifulSoup
+from summarizer import summarize_with_openai
 
-exa = Exa(os.getenv'API_KEY')  # Replace with os.getenv('EXA_API_KEY') if using env var
+exa = Exa(os.getenv('API_KEY'))  # Replace with os.getenv('EXA_API_KEY') if using env var
 
 def get_summary_from_url(url, char_limit=300):
     try:
@@ -48,7 +49,17 @@ for result in response.results:
     print(f"URL: {result.url}")
     
     # Try using Exa's .text field first, otherwise scrape summary
-    summary = result.text if hasattr(result, 'text') and result.text else get_summary_from_url(result.url)
+    if hasattr(result, 'text') and result.text:
+    	raw_content = result.text
+    else:
+        raw_content = get_summary_from_url(result.url, char_limit=1000) # Scrape more text if needed
+        
+    # Use AI if user opted in
+    if use_ai_summary:
+        summary = summarize_with_openai(raw_content)
+    else:
+        summary = raw_content.strip()[:300] + "..." # Basic preview fallback
+        
     print(f"Summary: {summary}\n")
 
 # Step 3: Prompt user for save option
