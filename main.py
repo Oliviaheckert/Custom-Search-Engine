@@ -50,7 +50,7 @@ for result in response.results:
     
     # Try using Exa's .text field first, otherwise scrape summary
     if hasattr(result, 'text') and result.text:
-    	raw_content = result.text
+        raw_content = result.text
     else:
         raw_content = get_summary_from_url(result.url, char_limit=1000) # Scrape more text if needed
         
