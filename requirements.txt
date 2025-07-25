@@ -1,0 +1,4 @@
+exa-py
+requests
+beautifulsoup4
+openai
