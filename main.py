@@ -55,6 +55,7 @@ for result in response.results:
         raw_content = get_summary_from_url(result.url, char_limit=1000) # Scrape more text if needed
         
     # Use AI if user opted in
+    use_ai_summary = input("Use AI to summarize results? (yes/no): ").strip().lower() == 'yes'
     if use_ai_summary:
         summary = summarize_with_openai(raw_content)
     else:
