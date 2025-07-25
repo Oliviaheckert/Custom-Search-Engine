@@ -10,6 +10,11 @@ if not EXA_API_KEY:
     raise ValueError("Missing EXA_API_KEY. Set it in your environment variables.")
 exa = Exa(EXA_API_KEY)
 
+# defining constants
+num_results = 10
+scrape_char_limit = 1000
+
+def main():
 def get_summary_from_url(url, char_limit=300):
     try:
         response = requests.get(url, timeout=5)
@@ -90,3 +95,5 @@ elif save_choice == 'md':
         for item in results_data:
             f.write(f"- [{item['title']}]({item['url']})\n")
     print("Results saved to results.md")
+    if __name__ == "__main__":
+        main()
