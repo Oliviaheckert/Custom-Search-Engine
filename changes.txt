@@ -1,0 +1,60 @@
+---
+
+## ✅ **3️⃣ `SETUP_NOTES.md`**
+
+This is where you keep **private notes** for yourself and a “to-do” roadmap.
+
+```markdown
+# 🗂 Setup Notes & Next Steps
+
+## ✅ API Setup (What still needs done at home)
+
+- [ ] **Exa API Key**
+    - Go to [Exa.ai](https://exa.ai)
+    - Create an account
+    - Generate an API key
+    - Add to environment:  
+      ```bash
+      export EXA_API_KEY="your_exa_api_key"
+      ```
+
+- [ ] **OpenAI API Key**
+    - Go to [OpenAI](https://platform.openai.com/)
+    - Create API key (free trial or paid)
+    - Add to environment:  
+      ```bash
+      export OPENAI_API_KEY="your_openai_api_key"
+      ```
+
+✅ Once keys are set, you can run:
+```bash
+python main.🚀  
+
+
+Next Steps for Project Growth 
+
+🏗 1. Improve Scalability
+	•	Implement caching (store URL summaries locally so you don’t re-summarize the same link)
+	•	Add async requests (faster scraping using aiohttp)
+
+🌐 2. Add a Web Interface
+	•	Convert main.py into a Flask or FastAPI web app
+	•	Add a search bar and results page for live demos
+
+💾 3. Add a Database
+	•	Use SQLite for local search history
+	•	Store: query, URL, summary, timestamp
+
+🤖 4. Multiple Summarizer Options
+	•	Offer choice of OpenAI GPT, Claude, or a local model like LLaMA.
+
+📊 5. Analytics / Visuals
+	•	Show a chart of which domains appear most often
+	•	Provide a keyword cloud for common terms in results
+
+⸻
+
+🧪 Testing Plan
+	•	Unit test for get_summary_from_url
+	•	Mock API calls for OpenAI & Exa so you can test without hitting rate limits
+	•	CLI test to confirm JSON and Markdown exports are formatted correctly
